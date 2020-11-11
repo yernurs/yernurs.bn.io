@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "business-networking-dev": {
+      "hosting": {
+        "application": [
+          "business-networking-dev"
+        ]
+      }
+    }
+  }
+}

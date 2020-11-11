@@ -1,0 +1,50 @@
+<div class="top-spacer"></div>
+<div class="container">
+
+  hello wtf
+  <div
+    class="mat-card" *ngIf="(!login && !signup) && !(auth.user$ | async)">
+    <!--  *ngIf="(!login && !signup) && (!auth.user$)"-->
+
+    <button mat-raised-button class="mat-card-content" (click)="login = true">Revisiting?</button>
+    <button mat-button class="mat-card-content" (click)="signup = true">New user?</button>
+  </div>
+
+  <div *ngIf="login">
+    <button mat-raised-button (click)="signIn()">
+      Sign in with Google
+    </button>
+  </div>
+
+  <div *ngIf="signup">
+    <div *ngIf="!signUpRole; else signup">
+      <button mat-button (click)="onBusiness()">Sign in as business</button>
+      <button mat-button (click)="onEmployee()">Sign in as employee</button>
+    </div>
+    <ng-template #signup>
+      <button mat-raised-button (click)="signIn()">
+        Sign up with Google
+      </button>
+    </ng-template>
+  </div>
+
+  <div class="card" *ngIf="auth.user$ | async as user;">
+
+    <mat-card >
+      <!--    *ngIf=" auth.user$ | async as user">-->
+      <mat-card-title>Profile</mat-card-title>
+
+      <h3>You logged in as <strong>{{user.displayName}}</strong></h3>
+      <h3>Your profile photo:</h3>
+      <img mat-card-image src="{{user.photoURL}}" style="border-radius: 50%; width: 100px" alt="photoURL">
+      <h3><small>{{user.uid}}</small></h3>
+      <h3>Your email is <strong>{{user.email}}</strong></h3>
+      <h3>Your role is {{user.role}}</h3>
+      <mat-card-actions>
+        <button mat-raised-button (click)="auth.signOut()">sign out</button>
+        <button mat-raised-button routerLink="/user">Go to profile</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

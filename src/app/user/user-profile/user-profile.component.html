@@ -1,0 +1,32 @@
+<div class="container-column"  *ngIf="profile">
+  <!--  [ngStyle]="{'background': 'url(' +user.photoURL+') no-repeat center bottom'}"-->
+  <mat-card class="profile" *ngIf="profile">
+    <div class="info">
+      <mat-card-title>Profile</mat-card-title>
+      <h3>You logged in as <strong>{{profile.displayName}}</strong></h3>
+      <h3>Your profile photo:</h3>
+      <img mat-card-image src="{{profile.photoURL}}" style="border-radius: 50%; width: 100px" alt="photoURL">
+      <h3><small>{{profile.uid}}</small></h3>
+      <h3>Your email is <strong>{{profile.email}}</strong></h3>
+      <mat-card-actions>
+        <button mat-raised-button (click)="auth.signOut()">sign out</button>
+        <button mat-raised-button routerLink="/user">Go to profile</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+
+
+  <div class="container-row">
+    <div class="container-column">
+      <app-user-contacts *ngFor="let contact of contacts" [contact]="contact"></app-user-contacts>
+    </div>
+    <div class="container-column">
+      <app-user-tasks></app-user-tasks>
+    </div>
+    <div class="container-column">
+      <app-user-projects></app-user-projects>
+    </div>
+  </div>
+  <app-user-profile-settings></app-user-profile-settings>
+</div>
+

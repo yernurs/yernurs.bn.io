@@ -1,0 +1,86 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- SIDENAV -->
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <div *ngIf="!auth.user$">
+        <a mat-button routerLinkActive="active-link" routerLink="/login" (click)="drawer.close()">🔑 Login</a>
+      </div>
+      <div *ngIf="auth.user$ | async as user">
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/kanban', user.uid]" (click)="drawer.close()">🍱 Kanban</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/user/profile']" (click)="drawer.close()">Profile</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/tasks', user.uid]" (click)="drawer.close()">Tasks</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/scheduler',user.uid]" (click)="drawer.close()">Scheduler</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/projects',user.uid]" (click)="drawer.close()">Projects</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/contacts',user.uid]" (click)="drawer.close()">Contacts</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- TOP TOOLBAR-->
+
+    <mat-toolbar class="above">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+
+
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="logo" routerLink="/">
+        LOGO
+        <label style="align-self: center; margin-left: 2rem">Business Networking</label>
+
+      </span>
+
+      <span class="fill-space"></span>
+      <div *ngIf="!(isHandset$ | async)" class="toolbar">
+
+        <div *ngIf="!afAuth.authState">
+          <a mat-button routerLinkActive="active-link" routerLink="/login">🔑 Login</a>
+        </div>
+
+
+        <div *ngIf="auth.user$| async as user">
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/kanban',user.uid]" (click)="drawer.close()">🍱 Kanban</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/user']" (click)="drawer.close()">Profile</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/tasks',user.uid]" (click)="drawer.close()">Tasks</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/scheduler',user.uid]" (click)="drawer.close()">Scheduler</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/projects',user.uid]" (click)="drawer.close()">Projects</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/contacts',user.uid]" (click)="drawer.close()">Contacts</a>
+        </div>
+      </div>
+
+      <!-- DROPDOWN MENU -->
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/about">
+          <i>💬</i>
+          <span>About us</span>
+        </a>
+      </mat-menu>
+      <div *ngIf="auth.user$ | async as user" style="display: flex; align-items: center; justify-content: flex-end">
+        <img mat-card-sm-image style="border-radius: 50%; height: 20%; width: 20%" src="{{user.photoURL}}" routerLink="/user">
+        <a mat-button (click)="auth.signOut()">
+          Sign out
+        </a>
+      </div>
+    </mat-toolbar>
+
+    <!-- TRANSCLUSION -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

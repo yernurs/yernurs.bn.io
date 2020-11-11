@@ -1,0 +1,23 @@
+.mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: 60px;
+}
+.mat-sidenav{
+  display: flex;
+  flex-direction: column;
+  .mat-nav-list{
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 15vw;
+    }
+  }
+}
+
+.mat-sidenav-container{
+  //width: 100vw;
+  //height: 100vh;
+}

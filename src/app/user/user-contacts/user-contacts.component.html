@@ -1,0 +1,12 @@
+<mat-card *ngIf="profile">
+  <mat-card-title>
+    <img src="{{profile.photoURL}}" style="width: 40px; border-radius: 50%" alt="profile">
+    {{profile.displayName}}
+  </mat-card-title>
+  <mat-card-content>
+    Email: {{profile.email}} <br>
+    Phone: {{profile.phone}} <br>
+    Address: {{profile.address}} <br>
+  </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
