@@ -1,1 +1,22 @@
 <p>project-directory works!</p>
+<div class="container-row">
+  <div class="container-column" *ngIf="currentP" >
+    <mat-card *ngFor="let current of currentP">
+      {{current.projId}}<br>
+      {{current.projName}}<br>
+      {{current.projDescription}}<br>
+      {{current.projParticipants}}<br>
+      <button mat-raised-button [routerLink]="['/project/directory', current.projId]">go to project</button>
+    </mat-card>
+  </div>
+  <div class="container-column" *ngIf="pastP" >
+    <mat-card *ngFor="let past of pastP">
+      {{past.projId}}<br>
+      {{past.projName}}<br>
+      {{past.projDescription}}<br>
+      {{past.projParticipants}}<br>
+      <button mat-raised-button [routerLink]="['/project/directory', past.projId]">go to project</button>
+    </mat-card>
+  </div>
+</div>
+

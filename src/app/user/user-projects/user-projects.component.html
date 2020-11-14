@@ -1,1 +1,4 @@
 <p>user-projects works!</p>
+<mat-card *ngFor="let project of projects | keyvalue">
+  {{project.value}}
+</mat-card>

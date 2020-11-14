@@ -16,7 +16,7 @@
         <a mat-button routerLinkActive="active-link" [routerLink]="['/user/profile']" (click)="drawer.close()">Profile</a>
         <a mat-button routerLinkActive="active-link" [routerLink]="['/tasks', user.uid]" (click)="drawer.close()">Tasks</a>
         <a mat-button routerLinkActive="active-link" [routerLink]="['/scheduler',user.uid]" (click)="drawer.close()">Scheduler</a>
-        <a mat-button routerLinkActive="active-link" [routerLink]="['/projects',user.uid]" (click)="drawer.close()">Projects</a>
+        <a mat-button routerLinkActive="active-link" [routerLink]="['/project']" (click)="drawer.close()">Projects</a>
         <a mat-button routerLinkActive="active-link" [routerLink]="['/contacts',user.uid]" (click)="drawer.close()">Contacts</a>
       </div>
     </mat-nav-list>
@@ -55,7 +55,7 @@
           <a mat-button routerLinkActive="active-link" [routerLink]="['/user']" (click)="drawer.close()">Profile</a>
           <a mat-button routerLinkActive="active-link" [routerLink]="['/tasks',user.uid]" (click)="drawer.close()">Tasks</a>
           <a mat-button routerLinkActive="active-link" [routerLink]="['/scheduler',user.uid]" (click)="drawer.close()">Scheduler</a>
-          <a mat-button routerLinkActive="active-link" [routerLink]="['/projects',user.uid]" (click)="drawer.close()">Projects</a>
+          <a mat-button routerLinkActive="active-link" [routerLink]="['/project']" (click)="drawer.close()">Projects</a>
           <a mat-button routerLinkActive="active-link" [routerLink]="['/contacts',user.uid]" (click)="drawer.close()">Contacts</a>
         </div>
       </div>

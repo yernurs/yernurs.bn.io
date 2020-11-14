@@ -6,8 +6,5 @@ import { faTwitter, faGoogle, faGithub } from '@fortawesome/free-brands-svg-icon
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'application';
-  faTwitter = faTwitter;
-  faGoogle = faGoogle;
-  faGithubAlt = faGithub;
+  title = 'BN PM platform';
 }

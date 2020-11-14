@@ -42,6 +42,8 @@ import { AllProjectsComponent } from './admin/all-projects/all-projects.componen
 import { LogsComponent } from './admin/logs/logs.component';
 import { UserContactsComponent } from './user/user-contacts/user-contacts.component';
 import { ToolComponent } from './shared/tool/tool.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {MatTableModule} from '@angular/material/table';
 
 const modules = [
   CommonModule,
@@ -57,7 +59,8 @@ const modules = [
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTableModule
 ];
 
 @NgModule({
@@ -83,16 +86,17 @@ const modules = [
     UserContactsComponent,
     ToolComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    ReactiveFormsModule,
-    ...modules,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        ReactiveFormsModule,
+        ...modules,
+        FontAwesomeModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,6 @@
+import firebase from 'firebase';
+import functions = firebase.functions;
+
 export const environment = {
   production: false,
   firebase: {
@@ -24,4 +27,22 @@ export interface Profile {
   currentP?: string [];
   pastP?: string [];
   contacts?: string [];
+}
+export interface Project {
+  projId: string;
+  projName: string;
+  projDescription: string;
+  projCreatorId: string;
+  projStartDate: Date;
+  projEndDate: Date;
+  projParticipants: string[];
+}
+export interface Task {
+  done: boolean;
+  pid?: string;
+  tskName: string;
+  tskId: string;
+  tskDescription: string;
+  tskDeadline: Date;
+  uid?: string;
 }

@@ -1,19 +1,32 @@
 <div class="container-column"  *ngIf="profile">
   <!--  [ngStyle]="{'background': 'url(' +user.photoURL+') no-repeat center bottom'}"-->
-  <mat-card class="profile" *ngIf="profile">
-    <div class="info">
-      <mat-card-title>Profile</mat-card-title>
-      <h3>You logged in as <strong>{{profile.displayName}}</strong></h3>
-      <h3>Your profile photo:</h3>
-      <img mat-card-image src="{{profile.photoURL}}" style="border-radius: 50%; width: 100px" alt="photoURL">
-      <h3><small>{{profile.uid}}</small></h3>
-      <h3>Your email is <strong>{{profile.email}}</strong></h3>
-      <mat-card-actions>
-        <button mat-raised-button (click)="auth.signOut()">sign out</button>
-        <button mat-raised-button routerLink="/user">Go to profile</button>
-      </mat-card-actions>
-    </div>
-  </mat-card>
+  <div class="container-row">
+    <mat-card class="profile" *ngIf="profile" style="display: flex">
+      <div class="info">
+        <mat-card-title>Profile</mat-card-title>
+        <h3>You logged in as <strong>{{profile.displayName}}</strong></h3>
+        <h3>Your profile photo:</h3>
+        <img mat-card-image src="{{profile.photoURL}}" style="border-radius: 50%; width: 100px" alt="photoURL">
+        <h3><small>{{profile.uid}}</small></h3>
+        <h3>Your email is <strong>{{profile.email}}</strong></h3>
+        <h3><small>{{profile.tags}}</small></h3>
+        <mat-card-actions>
+          <button mat-raised-button (click)="auth.signOut()">sign out</button>
+          <button mat-raised-button routerLink="/user">Go to profile</button>
+        </mat-card-actions>
+      </div>
+      <div class="fill-space"></div>
+      <div>
+        <div class="fill-space" style="flex-direction: column"></div>
+        <fa-icon [icon]="faTwitter" size="6px" [spin]="true"></fa-icon>Login with twitter
+        <fa-icon [icon]="faGithubAlt" size="6px" [styles]="{'stroke': 'black', 'color': 'red'}"></fa-icon>Github
+        <fa-icon [icon]="faGoogle" size="6px"></fa-icon>Google
+        <fa-icon [icon]="faVk" size="6px"></fa-icon>Vk
+        <fa-icon [icon]="faInstagram" size="6px"></fa-icon>Instagram
+      </div>
+    </mat-card>
+  </div>
+
 
 
   <div class="container-row">
